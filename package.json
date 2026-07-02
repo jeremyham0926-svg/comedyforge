@@ -1,0 +1,14 @@
+{
+  "name": "node-starter",
+  "private": true,
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
+
+
+ 

@@ -174,3 +174,13 @@ body {
 .character-highlight {
   transition: transform 0.2s ease, border-width 0.2s ease;
 }
+.character-footer {
+  background: #fff3e0;
+  border-top: 3px solid #ffb74d;
+  padding: 10px 12px;
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #6d4c41;
+  text-align: right;
+  border-radius: 0 0 12px 12px;
+}

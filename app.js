@@ -11,6 +11,10 @@ function playVoice(characterName) {
   console.log(`Playing voice line for ${characterName}...`);
   alert(`Voice lines coming soon for ${characterName}!`);
 }
+function activateChaosMode() {
+  console.log("CHAOS MODE ACTIVATED!");
+  alert("Chaos Mode coming soon! Characters will go wild!");
+}
 
     characters.forEach(char => {
   const div = document.createElement('div');

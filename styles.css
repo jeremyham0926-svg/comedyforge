@@ -31,8 +31,13 @@ body {
 }
 
 .character-card:hover {
-  transform: translateY(-8px) rotate(-1deg);
+  transform: translateY(-10px) rotate(-2deg) scale(1.03);
+  box-shadow: 10px 10px 0px #ffb300;
 }
+.character-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
 .character-image {
   width: 100%;
   height: auto;

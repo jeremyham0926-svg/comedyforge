@@ -9,6 +9,7 @@ let characters = [
     image: "detective-goose.png",
     role: "Chaos Detective",
     background: "#cfd8dc",
+    borderColor: "#455a64",   // noir steel blue
     stats: {
       power: 6,
       chaos: 8,
@@ -22,6 +23,7 @@ let characters = [
     image: "grandma-lasereyes.png",
     role: "Laser Elder",
     background: "#f8bbd0",
+    borderColor: "#ec407a",   // neon laser pink
     stats: {
       power: 9,
       chaos: 10,
@@ -29,6 +31,7 @@ let characters = [
     }
   }
 ];
+
 
 
 

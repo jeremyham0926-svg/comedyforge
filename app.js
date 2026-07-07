@@ -19,6 +19,22 @@ function generateScene(characterName) {
     </div>
   `;
 }
+function generateChaosScene(characterName) {
+  const output = document.getElementById("scene-output");
+
+  // pick a random chaos template
+  const template = chaosTemplates[Math.floor(Math.random() * chaosTemplates.length)];
+
+  // generate the chaos scene
+  const scene = template(characterName);
+
+  output.innerHTML = `
+    <div class="scene-text">
+      <strong>CHAOS MODE SCENE:</strong><br><br>
+      ${scene}
+    </div>
+  `;
+}
 
 
 function playVoice(characterName) {

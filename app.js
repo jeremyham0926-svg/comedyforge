@@ -13,7 +13,9 @@ fetch('https://comedyforge.onrender.com/api/characters')
   <div class="character-name">${char.name}</div>
   <div class="character-role">${char.role}</div>
   <div class="character-description">${char.description}</div>
+  <button class="scene-button" onclick="generateScene('${char.name}')">Generate Scene</button>
 `;
+
 
 
   container.appendChild(div);

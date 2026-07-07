@@ -89,3 +89,20 @@ body {
   transform: translateY(-4px);
   background: #ff8f00;
 }
+.voice-button {
+  background: #8e24aa;
+  color: white;
+  border: 3px solid #6a1b9a;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 4px 4px 0px #ab47bc;
+  transition: transform 0.15s ease;
+}
+
+.voice-button:hover {
+  transform: translateY(-4px);
+  background: #9c27b0;
+}

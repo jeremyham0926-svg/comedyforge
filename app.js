@@ -64,3 +64,10 @@ const sceneTemplates = [
   (name) => `${name} accidentally activates a cosmic button labeled “DO NOT PRESS” and the universe sneezes.`,
   (name) => `${name} challenges a robot to a dance battle and somehow wins by honking, blinking, or yelling.`,
 ];
+const chaosTemplates = [
+  (name) => `${name} is duplicated into 14 versions, each arguing about who honked first.`,
+  (name) => `${name} accidentally merges with a toaster and becomes a breakfast-themed superhero.`,
+  (name) => `${name} opens a wormhole by sneezing too hard, pulling in three confused raccoons.`,
+  (name) => `${name} becomes temporarily omniscient but only uses the power to judge people’s shoes.`,
+  (name) => `${name} triggers a cosmic glitch that makes everyone speak in dramatic slow motion.`,
+];

@@ -153,3 +153,7 @@ body {
 .scene-text {
   line-height: 1.6;
 }
+.scene-text {
+  font-style: italic;
+  padding: 10px;
+}

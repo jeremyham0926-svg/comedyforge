@@ -5,14 +5,21 @@ fetch('https://comedyforge.onrender.com/api/characters')
     const container = document.getElementById('characters');
 function generateScene(characterName) {
   const output = document.getElementById("scene-output");
+
+  // pick a random template
+  const template = sceneTemplates[Math.floor(Math.random() * sceneTemplates.length)];
+
+  // generate the scene
+  const scene = template(characterName);
+
   output.innerHTML = `
     <div class="scene-text">
-      Generating a scene for <strong>${characterName}</strong>...
-      <br><br>
-      <em>(Scene generation coming soon!)</em>
+      <strong>Scene Generated:</strong><br><br>
+      ${scene}
     </div>
   `;
 }
+
 
 function playVoice(characterName) {
   console.log(`Playing voice line for ${characterName}...`);

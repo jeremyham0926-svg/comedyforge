@@ -1,5 +1,6 @@
 // Fetch characters from the backend
-fetch('/api/characters')
+fetch('https://comedyforge.onrender.com/api/characters')
+
 
   .then(response => response.json())
   .then(characters => {

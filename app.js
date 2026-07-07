@@ -10,9 +10,10 @@ function generateScene(characterName) {
 
     characters.forEach(char => {
   const div = document.createElement('div');
-  div.className = 'character-card';
+div.className = 'character-card';
+div.style.background = char.background;
 
-  div.innerHTML = `
+div.innerHTML = `
   <img class="character-image" src="images/${char.image}" alt="${char.name}">
   <div class="character-name">${char.name}</div>
   <div class="character-role">${char.role}</div>

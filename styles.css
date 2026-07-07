@@ -160,3 +160,14 @@ body {
 .scene-text strong {
   color: #d50000;
 }
+.character-highlight {
+  animation: highlightFlash 0.8s ease;
+  border-width: 6px !important;
+  transform: scale(1.05) rotate(1deg);
+}
+
+@keyframes highlightFlash {
+  0% { box-shadow: 0 0 0px #ff1744; }
+  50% { box-shadow: 0 0 25px #ff1744; }
+  100% { box-shadow: 0 0 0px #ff1744; }
+}

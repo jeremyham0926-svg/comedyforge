@@ -9,10 +9,12 @@ fetch('https://comedyforge.onrender.com/api/characters')
   div.className = 'character-card';
 
   div.innerHTML = `
-    <img class="character-image" src="images/${char.image}" alt="${char.name}">
-    <div class="character-name">${char.name}</div>
-    <div class="character-description">${char.description}</div>
-  `;
+  <img class="character-image" src="images/${char.image}" alt="${char.name}">
+  <div class="character-name">${char.name}</div>
+  <div class="character-role">${char.role}</div>
+  <div class="character-description">${char.description}</div>
+`;
+
 
   container.appendChild(div);
 });

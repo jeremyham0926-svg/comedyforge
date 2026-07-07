@@ -2,7 +2,8 @@
   "name": "node-starter",
   "private": true,
   "scripts": {
-    "start": "node index.js"
+    "start": "node api/index.js"
+
 
   },
   "dependencies": {

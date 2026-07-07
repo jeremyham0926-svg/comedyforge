@@ -33,6 +33,14 @@ body {
 .character-card:hover {
   transform: translateY(-8px) rotate(-1deg);
 }
+.character-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  border: 4px solid #ffca28;
+  box-shadow: 4px 4px 0px #ffb300;
+}
 
 .character-name {
   font-size: 1.8rem;

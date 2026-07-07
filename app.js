@@ -20,6 +20,7 @@ function activateChaosMode() {
   const div = document.createElement('div');
 div.className = 'character-card';
 div.style.background = char.background;
+div.style.borderColor = char.borderColor;
 
 div.innerHTML = `
   <img class="character-image" src="images/${char.image}" alt="${char.name}">

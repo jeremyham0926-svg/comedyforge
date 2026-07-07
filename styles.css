@@ -37,6 +37,10 @@ body {
 .character-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+.character-card {
+  background-size: cover;
+  background-position: center;
+}
 
 .character-image {
   width: 100%;

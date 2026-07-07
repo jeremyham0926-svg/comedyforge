@@ -6,15 +6,18 @@ let characters = [
     id: 1, 
     name: "Detective Goose", 
     description: "A goose who solves crimes but honks at clues.",
-    image: "detective-goose.png"
+    image: "detective-goose.png",
+    role: "Chaos Detective"
   },
   { 
     id: 2, 
     name: "Grandma LaserEyes", 
     description: "Sweet old lady with laser vision when annoyed.",
-    image: "grandma-lasereyes.png"
+    image: "grandma-lasereyes.png",
+    role: "Laser Elder"
   }
 ];
+
 
 
 router.get('/', (req, res) => {

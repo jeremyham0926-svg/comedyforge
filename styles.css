@@ -106,3 +106,17 @@ body {
   transform: translateY(-4px);
   background: #9c27b0;
 }
+.character-stats {
+  background: #fffde7;
+  border: 3px solid #ffeb3b;
+  padding: 10px 15px;
+  border-radius: 12px;
+  margin-top: 12px;
+  box-shadow: 3px 3px 0px #fdd835;
+  font-size: 1.1rem;
+  color: #5d4037;
+}
+
+.character-stats div {
+  margin: 4px 0;
+}

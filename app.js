@@ -3,6 +3,10 @@ fetch('https://comedyforge.onrender.com/api/characters')
   .then(response => response.json())
   .then(characters => {
     const container = document.getElementById('characters');
+function generateScene(characterName) {
+  console.log(`Generating a scene for ${characterName}...`);
+  alert(`Scene generation coming soon for ${characterName}!`);
+}
 
     characters.forEach(char => {
   const div = document.createElement('div');

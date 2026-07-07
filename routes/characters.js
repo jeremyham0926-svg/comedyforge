@@ -7,16 +7,19 @@ let characters = [
     name: "Detective Goose", 
     description: "A goose who solves crimes but honks at clues.",
     image: "detective-goose.png",
-    role: "Chaos Detective"
+    role: "Chaos Detective",
+    background: "#cfd8dc"   // soft detective gray-blue
   },
   { 
     id: 2, 
     name: "Grandma LaserEyes", 
     description: "Sweet old lady with laser vision when annoyed.",
     image: "grandma-lasereyes.png",
-    role: "Laser Elder"
+    role: "Laser Elder",
+    background: "#f8bbd0"   // neon laser pink
   }
 ];
+
 
 
 

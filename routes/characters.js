@@ -2,9 +2,20 @@ const express = require('express');
 const router = express.Router();
 
 let characters = [
-  { id: 1, name: "Detective Goose", description: "A goose who solves crimes but honks at clues." },
-  { id: 2, name: "Grandma LaserEyes", description: "Sweet old lady with laser vision when annoyed." }
+  { 
+    id: 1, 
+    name: "Detective Goose", 
+    description: "A goose who solves crimes but honks at clues.",
+    image: "detective-goose.png"
+  },
+  { 
+    id: 2, 
+    name: "Grandma LaserEyes", 
+    description: "Sweet old lady with laser vision when annoyed.",
+    image: "grandma-lasereyes.png"
+  }
 ];
+
 
 router.get('/', (req, res) => {
   res.json(characters);

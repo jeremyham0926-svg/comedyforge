@@ -22,9 +22,14 @@ div.innerHTML = `
   <div class="character-name">${char.name}</div>
   <div class="character-role">${char.role}</div>
   <div class="character-description">${char.description}</div>
+  <div class="character-stats">
+    <div>Power: ${char.stats.power}</div>
+    <div>Chaos: ${char.stats.chaos}</div>
+    <div>Wisdom: ${char.stats.wisdom}</div>
+  </div>
   <button class="scene-button" onclick="generateScene('${char.name}')">Generate Scene</button>
+  <button class="voice-button" onclick="playVoice('${char.name}')">Play Voice Line</button>
 `;
-<button class="voice-button" onclick="playVoice('${char.name}')">Play Voice Line</button>
 
 
 

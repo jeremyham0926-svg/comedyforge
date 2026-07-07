@@ -1,18 +1,18 @@
 // Fetch characters from the backend
 fetch('https://comedyforge.onrender.com/api/characters')
-
-
   .then(response => response.json())
   .then(characters => {
     const container = document.getElementById('characters');
 
     characters.forEach(char => {
       const div = document.createElement('div');
+      div.className = 'character-card';
+
       div.innerHTML = `
-        <h2>${char.name}</h2>
-        <p>${char.description}</p>
-        <hr />
+        <div class="character-name">${char.name}</div>
+        <div class="character-description">${char.description}</div>
       `;
+
       container.appendChild(div);
     });
   })

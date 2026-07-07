@@ -8,7 +8,12 @@ let characters = [
     description: "A goose who solves crimes but honks at clues.",
     image: "detective-goose.png",
     role: "Chaos Detective",
-    background: "#cfd8dc"   // soft detective gray-blue
+    background: "#cfd8dc",
+    stats: {
+      power: 6,
+      chaos: 8,
+      wisdom: 4
+    }
   },
   { 
     id: 2, 
@@ -16,7 +21,12 @@ let characters = [
     description: "Sweet old lady with laser vision when annoyed.",
     image: "grandma-lasereyes.png",
     role: "Laser Elder",
-    background: "#f8bbd0"   // neon laser pink
+    background: "#f8bbd0",
+    stats: {
+      power: 9,
+      chaos: 10,
+      wisdom: 7
+    }
   }
 ];
 

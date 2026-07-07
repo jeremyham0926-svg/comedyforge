@@ -63,3 +63,20 @@ body {
   font-size: 1.2rem;
   color: #5d4037;
 }
+.scene-button {
+  background: #ff6f00;
+  color: white;
+  border: 3px solid #e65100;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 15px;
+  box-shadow: 4px 4px 0px #ffb300;
+  transition: transform 0.15s ease;
+}
+
+.scene-button:hover {
+  transform: translateY(-4px);
+  background: #ff8f00;
+}

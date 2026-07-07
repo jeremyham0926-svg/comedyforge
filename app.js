@@ -20,6 +20,7 @@ div.innerHTML = `
   <div class="character-description">${char.description}</div>
   <button class="scene-button" onclick="generateScene('${char.name}')">Generate Scene</button>
 `;
+<button class="voice-button" onclick="playVoice('${char.name}')">Play Voice Line</button>
 
 
 

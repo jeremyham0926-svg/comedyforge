@@ -4,9 +4,16 @@ fetch('https://comedyforge.onrender.com/api/characters')
   .then(characters => {
     const container = document.getElementById('characters');
 function generateScene(characterName) {
-  console.log(`Generating a scene for ${characterName}...`);
-  alert(`Scene generation coming soon for ${characterName}!`);
+  const output = document.getElementById("scene-output");
+  output.innerHTML = `
+    <div class="scene-text">
+      Generating a scene for <strong>${characterName}</strong>...
+      <br><br>
+      <em>(Scene generation coming soon!)</em>
+    </div>
+  `;
 }
+
 function playVoice(characterName) {
   console.log(`Playing voice line for ${characterName}...`);
   alert(`Voice lines coming soon for ${characterName}!`);

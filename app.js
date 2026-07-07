@@ -76,8 +76,12 @@ div.innerHTML = `
     <div>Wisdom: ${char.stats.wisdom}</div>
   </div>
   <button class="scene-button" onclick="generateScene('${char.name}')">Generate Scene</button>
-  <button class="voice-button" onclick="playVoice('${char.name}')">Play Voice Line</button>
-`;
+<button class="voice-button" onclick="playVoice('${char.name}')">Play Voice Line</button>
+
+<div class="character-footer">
+  Multiverse ID: ${char.id}
+</div>
+
 
 
 

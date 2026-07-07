@@ -7,6 +7,10 @@ function generateScene(characterName) {
   console.log(`Generating a scene for ${characterName}...`);
   alert(`Scene generation coming soon for ${characterName}!`);
 }
+function playVoice(characterName) {
+  console.log(`Playing voice line for ${characterName}...`);
+  alert(`Voice lines coming soon for ${characterName}!`);
+}
 
     characters.forEach(char => {
   const div = document.createElement('div');

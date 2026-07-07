@@ -138,3 +138,18 @@ body {
   transform: scale(1.08) rotate(2deg);
   background: #ff1744;
 }
+.scene-output {
+  background: #fffde7;
+  border: 4px solid #ffeb3b;
+  padding: 20px;
+  border-radius: 18px;
+  margin: 20px auto;
+  width: 90%;
+  box-shadow: 6px 6px 0px #fdd835;
+  font-size: 1.3rem;
+  color: #5d4037;
+}
+
+.scene-text {
+  line-height: 1.6;
+}

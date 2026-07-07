@@ -37,23 +37,26 @@ function generateChaosScene(characterName) {
 }
 
 
-function playVoice(characterName) {
-  console.log(`Playing voice line for ${characterName}...`);
-  alert(`Voice lines coming soon for ${characterName}!`);
-}
 function activateChaosMode() {
-  const characters = document.querySelectorAll('.character-card');
+  const cards = document.querySelectorAll('.character-card');
 
-  // pick a random character
-  const randomIndex = Math.floor(Math.random() * characters.length);
-  const randomCard = characters[randomIndex];
+  // remove old highlights
+  cards.forEach(card => card.classList.remove('character-highlight'));
 
-  // extract the character name from the card
+  // pick a random card
+  const randomIndex = Math.floor(Math.random() * cards.length);
+  const randomCard = cards[randomIndex];
+
+  // highlight it
+  randomCard.classList.add('character-highlight');
+
+  // extract name
   const name = randomCard.querySelector('.character-name').innerText;
 
   // generate chaos scene
   generateChaosScene(name);
 }
+
 
 
     characters.forEach(char => {

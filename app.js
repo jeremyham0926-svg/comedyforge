@@ -50,3 +50,10 @@ div.innerHTML = `
 
   })
   .catch(err => console.error('Error fetching characters:', err));
+const sceneTemplates = [
+  (name) => `${name} enters the multiverse café and immediately causes chaos by ordering a drink that doesn’t exist.`,
+  (name) => `${name} discovers a glowing portal behind a vending machine and decides to investigate without thinking.`,
+  (name) => `${name} tries to solve a mystery but gets distracted by a dramatic monologue from a talking sandwich.`,
+  (name) => `${name} accidentally activates a cosmic button labeled “DO NOT PRESS” and the universe sneezes.`,
+  (name) => `${name} challenges a robot to a dance battle and somehow wins by honking, blinking, or yelling.`,
+];

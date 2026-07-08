@@ -95,6 +95,36 @@ router.get('/:id/scene', (req, res) => {
 
   res.json({ scene });
 });
+router.get('/multi/:count', (req, res) => {
+  const count = Math.min(Math.max(parseInt(req.params.count), 1), 3);
+
+  // Shuffle characters
+  const shuffled = [...characters].sort(() => Math.random() - 0.5);
+
+  // Pick the number requested
+  const selected = shuffled.slice(0, count);
+
+  // Build a dynamic scene
+  let intro = `${selected.map(c => c.name).join(", ")} enter the multiverse together.`;
+
+  let actions = selected.map(c => {
+    const chaos = c.stats?.chaos || 5;
+
+    if (chaos > 6) {
+      return `${c.name} unleashes chaotic energy that warps reality.`;
+    } else {
+      return `${c.name} explores the strange environment cautiously.`;
+    }
+  }).join(" ");
+
+  let twist = count === 3
+    ? "A cosmic anomaly appears — the trio must act fast."
+    : "A ripple in spacetime changes everything.";
+
+  const scene = `${intro} ${actions} ${twist}`;
+
+  res.json({ scene, characters: selected });
+});
 
 module.exports = router;
 

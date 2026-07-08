@@ -51,18 +51,21 @@ const chaosTemplates = [
 ];
 
 // Normal scene generator
-function generateScene(characterName) {
-  const output = document.getElementById("scene-output");
-  const template = sceneTemplates[Math.floor(Math.random() * sceneTemplates.length)];
-  const scene = template(characterName);
+function generateScene(name) {
+  fetch(`/api/characters`)
+    .then(res => res.json())
+    .then(chars => {
+      const char = chars.find(c => c.name === name);
+      if (!char) return;
 
-  output.innerHTML = `
-    <div class="scene-text">
-      <strong>Scene Generated:</strong><br><br>
-      ${scene}
-    </div>
-  `;
+      fetch(`/api/characters/${char.id}/scene`)
+        .then(res => res.json())
+        .then(data => {
+          alert(data.scene);
+        });
+    });
 }
+
 
 // Chaos scene generator
 function generateChaosScene(characterName) {

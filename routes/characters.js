@@ -46,6 +46,25 @@ router.post('/', (req, res) => {
   characters.push(newCharacter);
   res.json(newCharacter);
 });
+router.get('/:id/voice', (req, res) => {
+  const id = parseInt(req.params.id);
+  const character = characters.find(c => c.id === id);
+
+  if (!character) {
+    return res.status(404).json({ error: "Character not found" });
+  }
+
+  const lines = [
+    `${character.name} enters the multiverse with chaotic energy.`,
+    `${character.name} says: "I smell trouble... and snacks."`,
+    `${character.name} whispers: "Reality is optional."`,
+    `${character.name} shouts: "Chaos mode activated!"`
+  ];
+
+  const randomLine = lines[Math.floor(Math.random() * lines.length)];
+
+  res.json({ line: randomLine });
+});
 
 module.exports = router;
 

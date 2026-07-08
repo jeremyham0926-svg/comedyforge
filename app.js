@@ -51,20 +51,35 @@ const chaosTemplates = [
 ];
 
 // Normal scene generator
-function generateScene(name) {
-  fetch(`/api/characters`)
-    .then(res => res.json())
-    .then(chars => {
-      const char = chars.find(c => c.name === name);
-      if (!char) return;
+// existing functions above...
 
-      fetch(`/api/characters/${char.id}/scene`)
-        .then(res => res.json())
-        .then(data => {
-          alert(data.scene);
-        });
-    });
+function generateScene(name) {
+  const size = parseInt(document.getElementById("scene-size").value);
+
+  if (size === 1) {
+    // Single-character scene
+    fetch(`/api/characters`)
+      .then(res => res.json())
+      .then(chars => {
+        const char = chars.find(c => c.name === name);
+        if (!char) return;
+
+        fetch(`/api/characters/${char.id}/scene`)
+          .then(res => res.json())
+          .then(data => {
+            alert(data.scene);
+          });
+      });
+  } else {
+    // Multi-character scene
+    fetch(`/api/characters/multi/${size}`)
+      .then(res => res.json())
+      .then(data => {
+        alert(data.scene);
+      });
+  }
 }
+
 
 
 // Chaos scene generator

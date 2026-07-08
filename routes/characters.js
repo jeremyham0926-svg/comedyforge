@@ -65,6 +65,36 @@ router.get('/:id/voice', (req, res) => {
 
   res.json({ line: randomLine });
 });
+router.get('/:id/scene', (req, res) => {
+  const id = parseInt(req.params.id);
+  const character = characters.find(c => c.id === id);
+
+  if (!character) {
+    return res.status(404).json({ error: "Character not found" });
+  }
+
+  const chaosLevel = character.stats?.chaos || 5;
+
+  const baseScenes = [
+    `${character.name} steps through a glowing multiverse portal, feathers ruffled and ready.`,
+    `${character.name} arrives in a neon‑lit alley where reality bends like warm taffy.`,
+    `${character.name} wakes up inside a cosmic diner where the menus rewrite themselves.`,
+    `${character.name} materializes in a floating library guarded by sarcastic holograms.`
+  ];
+
+  const chaosScenes = [
+    `${character.name} unleashes a chaos blast that turns gravity into a polite suggestion.`,
+    `${character.name} accidentally opens a wormhole that smells faintly like pickles.`,
+    `${character.name} triggers a multiverse glitch — now everyone speaks in dramatic whispers.`,
+    `${character.name} summons a cosmic goose stampede. No one is prepared.`
+  ];
+
+  const scene = chaosLevel > 6
+    ? chaosScenes[Math.floor(Math.random() * chaosScenes.length)]
+    : baseScenes[Math.floor(Math.random() * baseScenes.length)];
+
+  res.json({ scene });
+});
 
 module.exports = router;
 

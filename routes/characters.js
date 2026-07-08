@@ -117,9 +117,16 @@ router.get('/multi/:count', (req, res) => {
     }
   }).join(" ");
 
-  let twist = count === 3
-    ? "A cosmic anomaly appears — the trio must act fast."
-    : "A ripple in spacetime changes everything.";
+  let twist;
+
+if (selected.length === 3) {
+  twist = "A cosmic anomaly appears — the trio must act fast.";
+} else if (selected.length === 2) {
+  twist = "A strange energy crackles between the duo.";
+} else {
+  twist = "Reality shifts around the lone traveler.";
+}
+
 
   const scene = `${intro} ${actions} ${twist}`;
 

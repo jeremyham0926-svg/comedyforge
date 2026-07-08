@@ -9,6 +9,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
+app.use('/images', express.static(__dirname + '/images'));
 
 app.use(express.static(__dirname));
 

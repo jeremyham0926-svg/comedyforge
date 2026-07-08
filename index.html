@@ -1,68 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Comedy Multiverse Characters</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Comedy Multiverse Co.</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<section id="character-gallery">
-    <h2>Comedy Multiverse Characters</h2>
-    <div id="characters-container" class="character-grid"></div>
-</section>
+    <h1>Comedy Multiverse Co.</h1>
 
-  <h1 class="title">Comedy Multiverse Characters</h1>
+    <!-- Character Gallery -->
+    <section id="character-gallery">
+        <h2>Comedy Multiverse Characters</h2>
+        <div id="characters-container" class="character-grid"></div>
+    </section>
 
-  <button class="chaos-button" onclick="activateChaosMode()">CHAOS MODE</button>
-<select id="scene-size">
-  <option value="1">1 Character</option>
-  <option value="2">2 Characters</option>
-  <option value="3">3 Characters</option>
-</select>
+    <!-- Scene Generator -->
+    <section id="scene-generator">
+        <h2>Generate a Comedy Scene</h2>
 
-  <div id="scene-output" class="scene-output"></div>
+        <textarea id="scene-prompt" placeholder="Describe the scene..."></textarea>
 
-  <div id="characters" class="character-grid"></div>
+        <button id="generate-btn">Generate Scene</button>
 
-  <script src="app.js"></script>
-<script>
-let selectedCharacters = [];
+        <div id="scene-output"></div>
+    </section>
 
-async function loadCharacters() {
-    const res = await fetch('/api/characters');
-    const characters = await res.json();
+    <script>
+    let selectedCharacters = [];
 
-    const container = document.getElementById('characters-container');
-    container.innerHTML = '';
+    async function loadCharacters() {
+        const res = await fetch('/api/characters');
+        const characters = await res.json();
 
-    characters.forEach(char => {
-        const card = document.createElement('div');
-        card.className = 'character-card';
+        const container = document.getElementById('characters-container');
+        container.innerHTML = '';
 
-        card.innerHTML = `
-            <img src="${char.image}" alt="${char.name}">
-            <h3>${char.name}</h3>
-            <p>${char.description}</p>
-        `;
+        characters.forEach(char => {
+            const card = document.createElement('div');
+            card.className = 'character-card';
 
-        // Click to select/deselect
-        card.addEventListener('click', () => {
-            if (selectedCharacters.includes(char.name)) {
-                selectedCharacters = selectedCharacters.filter(n => n !== char.name);
-                card.classList.remove('selected');
-            } else {
-                selectedCharacters.push(char.name);
-                card.classList.add('selected');
-            }
+            card.innerHTML = `
+                <img src="${char.image}" alt="${char.name}">
+                <h3>${char.name}</h3>
+                <p>${char.description}</p>
+            `;
 
-            console.log("Selected:", selectedCharacters);
+            // Click to select/deselect
+            card.addEventListener('click', () => {
+                if (selectedCharacters.includes(char.name)) {
+                    selectedCharacters = selectedCharacters.filter(n => n !== char.name);
+                    card.classList.remove('selected');
+                } else {
+                    selectedCharacters.push(char.name);
+                    card.classList.add('selected');
+                }
+
+                console.log("Selected:", selectedCharacters);
+            });
+
+            container.appendChild(card);
+        });
+    }
+
+    loadCharacters();
+
+    document.getElementById('generate-btn').addEventListener('click', async () => {
+        const prompt = document.getElementById('scene-prompt').value;
+
+        const res = await fetch('/api/scene', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                characters: selectedCharacters,
+                prompt: prompt
+            })
         });
 
-        container.appendChild(card);
-    });
-}
+        const data = await res.json();
 
-loadCharacters();
-</script>
+        document.getElementById('scene-output').innerHTML = `
+            <h3>${data.title}</h3>
+            <p>${data.description}</p>
+            <h4>Dialogue</h4>
+            <p>${data.dialogue}</p>
+        `;
+    });
+    </script>
+</body>
+</html>
+
+
 
 

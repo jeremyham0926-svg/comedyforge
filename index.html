@@ -26,6 +26,8 @@
 
   <script src="app.js"></script>
 <script>
+let selectedCharacters = [];
+
 async function loadCharacters() {
     const res = await fetch('/api/characters');
     const characters = await res.json();
@@ -43,13 +45,24 @@ async function loadCharacters() {
             <p>${char.description}</p>
         `;
 
+        // Click to select/deselect
+        card.addEventListener('click', () => {
+            if (selectedCharacters.includes(char.name)) {
+                selectedCharacters = selectedCharacters.filter(n => n !== char.name);
+                card.classList.remove('selected');
+            } else {
+                selectedCharacters.push(char.name);
+                card.classList.add('selected');
+            }
+
+            console.log("Selected:", selectedCharacters);
+        });
+
         container.appendChild(card);
     });
 }
 
 loadCharacters();
 </script>
-</body>
-</html>
 
 

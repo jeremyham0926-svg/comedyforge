@@ -98,3 +98,19 @@ function activateChaosMode() {
 function playVoice(characterName) {
   alert(`Voice lines coming soon for ${characterName}!`);
 }
+// existing functions above...
+
+function playVoice(name) {
+  fetch(`/api/characters`)
+    .then(res => res.json())
+    .then(chars => {
+      const char = chars.find(c => c.name === name);
+      if (!char) return;
+
+      fetch(`/api/characters/${char.id}/voice`)
+        .then(res => res.json())
+        .then(data => {
+          alert(data.line);
+        });
+    });
+}

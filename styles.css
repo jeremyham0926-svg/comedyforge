@@ -218,4 +218,22 @@ body {
     margin: 0;
     font-size: 1.2rem;
 }
+.character-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.character-card:hover {
+    transform: translateY(-4px);
+}
+
+.character-card.selected {
+    border: 3px solid #4CAF50;
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.6);
+}
 

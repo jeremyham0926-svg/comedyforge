@@ -6,7 +6,8 @@ const characters = [
     id: 1,
     name: "Detective Goose",
     description: "A goose who solves crimes but honks at clues.",
-    image: "detective-goose.png",
+    image: "/images/detective-goose.png"
+,
     role: "Chaos Detective",
     background: "#cfd8dc",
     borderColor: "#455a64",
@@ -16,7 +17,8 @@ const characters = [
     id: 2,
     name: "Grandma LaserEyes",
     description: "Sweet old lady with laser vision when annoyed.",
-    image: "grandma-lasereyes.png",
+    image: "/images/grandma-lazereyes.png"
+,
     role: "Laser Elder",
     background: "#f8bbd0",
     borderColor: "#ec407a",

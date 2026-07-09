@@ -39,4 +39,3 @@ ${safeChars[1] || 'Narrator'}: "And I'll be over here pretending this is normal.
 });
 
 module.exports = router;
-

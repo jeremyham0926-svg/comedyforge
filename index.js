@@ -21,9 +21,11 @@ app.use('/images', express.static(path.join(__dirname, 'public/images')));
 const characterRoutes = require('./routes/characters');
 app.use('/api/characters', characterRoutes);
 
+const sceneRoutes = require('./routes/scene');
+app.use('/api/scene', sceneRoutes);
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-

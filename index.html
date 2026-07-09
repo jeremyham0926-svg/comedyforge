@@ -76,35 +76,38 @@
         loadCharacters();
 
         // NORMAL SCENE GENERATOR
-        document.getElementById('generate-btn').addEventListener('click', async () => {
-            const prompt = document.getElementById('scene-prompt').value;
+document.getElementById('generate-btn').addEventListener('click', async () => {
+    const prompt = document.getElementById('scene-prompt').value;
 
-            const res = await fetch('https://comedyforge.onrender.com/scene')
-, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    characters: selectedCharacters,
-                    prompt: prompt
-                })
-            });
+    const res = await fetch('https://comedyforge.onrender.com/scene', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            characters: selectedCharacters,
+            prompt: prompt
+        })
+    });
 
-            const data = await res.json();
-            renderScene(data);
+    const data = await res.json();
+    renderScene(data);
+});
+
+// CHAOS MODE
+document.getElementById('chaos-btn').addEventListener('click', async () => {
+    console.log("CHAOS MODE ACTIVATED");
+
+    const res = await fetch('https://comedyforge.onrender.com/chaos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    const data = await res.json();
+    renderScene(data);
+});
+
         });
 
-        // CHAOS MODE
-        document.getElementById('chaos-btn').addEventListener('click', async () => {
-            console.log("CHAOS MODE ACTIVATED");
-
-            const res = await fetch('https://comedyforge.onrender.com/chaos')
-, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' }
-            });
-
-            const data = await res.json();
-            renderScene(data);
+       
         });
 
         // RENDER SCENE

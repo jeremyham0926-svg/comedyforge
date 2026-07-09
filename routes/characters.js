@@ -1,32 +1,28 @@
-const express = require('express');
+import express from 'express';
+
 const router = express.Router();
 
-const characters = [
-    {
-        name: "Detective Goose",
-        description: "A goose who solves crimes but honks at clues.",
-        image: "/images/detective-goose.png"
-    },
-    {
-        name: "Grandma Lazereyes",
-        description: "A grandma with laser vision and zero patience for nonsense.",
-        image: "/images/grandma-lazereyes.png"
-    },
-    {
-        name: "Goose Noir",
-        description: "A moodier version of Detective Goose who only works in foggy alleys.",
-        image: "/images/detective-goose.png"
-    },
-    {
-        name: "Laser Granny Supreme",
-        description: "Grandma Lazereyes at full power, capable of vaporizing plot holes.",
-        image: "/images/grandma-lazereyes.png"
-    }
-];
-
 router.get('/', (req, res) => {
-    res.json(characters);
+  const characters = [
+    {
+      name: "Detective Goose",
+      description: "A noir goose detective who honks clues.",
+      image: "https://i.imgur.com/your-goose-image.png"
+    },
+    {
+      name: "Grandma Lazereyes",
+      description: "A sweet old lady who shoots lasers when angry.",
+      image: "https://i.imgur.com/your-grandma-image.png"
+    },
+    {
+      name: "Laser Granny Supreme",
+      description: "The multiverse’s most powerful grandmother.",
+      image: "https://i.imgur.com/your-laser-granny.png"
+    }
+  ];
+
+  res.json(characters);
 });
 
-module.exports = router;
+export default router;
 

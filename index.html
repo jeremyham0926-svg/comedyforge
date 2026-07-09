@@ -45,7 +45,6 @@
                 <p>${char.description}</p>
             `;
 
-            // Click to select/deselect
             card.addEventListener('click', () => {
                 if (selectedCharacters.includes(char.name)) {
                     selectedCharacters = selectedCharacters.filter(n => n !== char.name);
@@ -54,8 +53,6 @@
                     selectedCharacters.push(char.name);
                     card.classList.add('selected');
                 }
-
-                console.log("Selected:", selectedCharacters);
             });
 
             container.appendChild(card);
@@ -81,14 +78,14 @@
         document.getElementById('scene-output').innerHTML = `
             <h3>${data.title}</h3>
             <p>${data.description}</p>
+            <h4>Beat Map</h4>
+            <pre>${data.beats}</pre>
             <h4>Dialogue</h4>
-            <p>${data.dialogue}</p>
+            <pre>${data.dialogue}</pre>
+            <h4>Camera Notes</h4>
+            <pre>${data.camera}</pre>
         `;
     });
     </script>
 </body>
 </html>
-
-
-
-

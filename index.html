@@ -2,130 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comedy Multiverse Co.</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+
     <h1>Comedy Multiverse Co.</h1>
 
-    <!-- Character Gallery -->
-    <section id="character-gallery">
-        <h2>Comedy Multiverse Characters</h2>
-        <div id="characters-container" class="character-grid"></div>
-    </section>
+    <!-- CHARACTER LIST -->
+    <section id="characters"></section>
 
-    <!-- Scene Generator -->
+    <!-- SCENE GENERATOR -->
     <section id="scene-generator">
-        <h2>Generate a Comedy Scene</h2>
+        <h2>Scene Generator</h2>
 
-        <textarea id="scene-prompt" placeholder="Describe the scene..."></textarea>
+        <input 
+            id="scene-prompt" 
+            type="text" 
+            placeholder="Enter your scene prompt..."
+        />
 
         <button id="generate-btn">Generate Scene</button>
-        <button id="chaos-btn" class="chaos">CHAOS MODE</button>
+        <button id="chaos-btn" style="background:red;color:white;">CHAOS MODE</button>
 
         <div id="scene-output"></div>
     </section>
 
-    <!-- MAIN SCRIPT -->
-    <script>
-        console.log("NEW JS LOADED — CHAOS MODE ENABLED");
+    <!-- LOAD ALL JS FILES -->
+    <script src="characters.js"></script>
+    <script src="scene.js"></script>
+    <script src="chaos.js"></script>
+    <script src="renderScene.js"></script>
+    <script src="script.js"></script>
 
-        let selectedCharacters = [];
-
-        async function loadCharacters() {
-            const res = await fetch('/api/characters');
-            const characters = await res.json();
-
-            const container = document.getElementById('characters-container');
-            container.innerHTML = '';
-
-            characters.forEach(char => {
-                const card = document.createElement('div');
-                card.className = 'character-card';
-
-                const wrapper = document.createElement('div');
-                wrapper.className = 'character-inner';
-
-                wrapper.innerHTML = `
-                    <img src="${char.image}" alt="${char.name}">
-                    <h3>${char.name}</h3>
-                    <p>${char.description}</p>
-                `;
-
-                card.appendChild(wrapper);
-
-                card.addEventListener('click', () => {
-                    console.log("Clicked:", char.name);
-
-                    if (selectedCharacters.includes(char.name)) {
-                        selectedCharacters = selectedCharacters.filter(n => n !== char.name);
-                        card.classList.remove('selected');
-                    } else {
-                        selectedCharacters.push(char.name);
-                        card.classList.add('selected');
-                    }
-
-                    console.log("Selected Characters:", selectedCharacters);
-                });
-
-                container.appendChild(card);
-            });
-        }
-
-        loadCharacters();
-
-        // NORMAL SCENE GENERATOR
-document.getElementById('generate-btn').addEventListener('click', async () => {
-    const prompt = document.getElementById('scene-prompt').value;
-
-    const res = await fetch('https://comedyforge.onrender.com/scene', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            characters: selectedCharacters,
-            prompt: prompt
-        })
-    });
-
-    const data = await res.json();
-    renderScene(data);
-});
-
-// CHAOS MODE
-document.getElementById('chaos-btn').addEventListener('click', async () => {
-    console.log("CHAOS MODE ACTIVATED");
-
-    const res = await fetch('https://comedyforge.onrender.com/chaos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
-    });
-
-    const data = await res.json();
-    renderScene(data);
-});
-
-        
-
-       
-        });
-
-        // RENDER SCENE
-        function renderScene(data) {
-            document.getElementById('scene-output').innerHTML = `
-                <h3>${data.title}</h3>
-                <p>${data.description}</p>
-
-                <h4>Beat Map</h4>
-                <pre>${data.beats}</pre>
-
-                <h4>Dialogue</h4>
-                <pre>${data.dialogue}</pre>
-
-                <h4>Camera Notes</h4>
-                <pre>${data.camera}</pre>
-            `;
-        }
-    </script>
 </body>
 </html>

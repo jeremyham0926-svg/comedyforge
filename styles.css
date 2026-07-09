@@ -9,7 +9,6 @@ h1, h2, h3, h4 {
     text-align: center;
 }
 
-/* Character grid */
 .character-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -17,12 +16,11 @@ h1, h2, h3, h4 {
     padding: 20px;
 }
 
-/* Character cards */
 .character-card {
     background: #ffffff;
     color: #000;
     border-radius: 12px;
-    padding: 15px;
+    padding: 0;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     cursor: pointer;
@@ -38,18 +36,17 @@ h1, h2, h3, h4 {
     box-shadow: 0 0 12px rgba(76, 175, 80, 0.6);
 }
 
-.character-card img {
+.character-inner {
+    padding: 15px;
+    pointer-events: none; /* FIX: ensures clicks hit the card */
+}
+
+.character-inner img {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
-.character-card h3 {
-    margin: 0;
-    font-size: 1.2rem;
-}
-
-/* Scene generator */
 #scene-generator {
     margin: 40px;
     padding: 20px;

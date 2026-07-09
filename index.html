@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Comedy Multiverse Co.</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Cache-busting version tag to force browser to reload -->
+    <link rel="stylesheet" href="styles.css?v=3">
 </head>
+
 <body>
     <h1>Comedy Multiverse Co.</h1>
 
+    <!-- Character Gallery -->
     <section id="character-gallery">
         <h2>Comedy Multiverse Characters</h2>
         <div id="characters-container" class="character-grid"></div>
     </section>
 
+    <!-- Scene Generator -->
     <section id="scene-generator">
         <h2>Generate a Comedy Scene</h2>
 
@@ -23,72 +28,84 @@
         <div id="scene-output"></div>
     </section>
 
+    <!-- MAIN SCRIPT -->
     <script>
-    let selectedCharacters = [];
+        console.log("NEW JS LOADED");
 
-    async function loadCharacters() {
-        const res = await fetch('/api/characters');
-        const characters = await res.json();
+        let selectedCharacters = [];
 
-        const container = document.getElementById('characters-container');
-        container.innerHTML = '';
+        async function loadCharacters() {
+            const res = await fetch('/api/characters');
+            const characters = await res.json();
 
-        characters.forEach(char => {
-            const card = document.createElement('div');
-            card.className = 'character-card';
+            const container = document.getElementById('characters-container');
+            container.innerHTML = '';
 
-            const wrapper = document.createElement('div');
-            wrapper.className = 'character-inner';
+            characters.forEach(char => {
+                const card = document.createElement('div');
+                card.className = 'character-card';
 
-            wrapper.innerHTML = `
-                <img src="${char.image}" alt="${char.name}">
-                <h3>${char.name}</h3>
-                <p>${char.description}</p>
-            `;
+                const wrapper = document.createElement('div');
+                wrapper.className = 'character-inner';
 
-            card.appendChild(wrapper);
+                wrapper.innerHTML = `
+                    <img src="${char.image}" alt="${char.name}">
+                    <h3>${char.name}</h3>
+                    <p>${char.description}</p>
+                `;
 
-            card.addEventListener('click', () => {
-                if (selectedCharacters.includes(char.name)) {
-                    selectedCharacters = selectedCharacters.filter(n => n !== char.name);
-                    card.classList.remove('selected');
-                } else {
-                    selectedCharacters.push(char.name);
-                    card.classList.add('selected');
-                }
+                card.appendChild(wrapper);
+
+                // CLICK HANDLER
+                card.addEventListener('click', () => {
+                    console.log("Clicked:", char.name);
+
+                    if (selectedCharacters.includes(char.name)) {
+                        selectedCharacters = selectedCharacters.filter(n => n !== char.name);
+                        card.classList.remove('selected');
+                    } else {
+                        selectedCharacters.push(char.name);
+                        card.classList.add('selected');
+                    }
+
+                    console.log("Selected Characters:", selectedCharacters);
+                });
+
+                container.appendChild(card);
+            });
+        }
+
+        loadCharacters();
+
+        // SCENE GENERATOR
+        document.getElementById('generate-btn').addEventListener('click', async () => {
+            const prompt = document.getElementById('scene-prompt').value;
+
+            const res = await fetch('/api/scene', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    characters: selectedCharacters,
+                    prompt: prompt
+                })
             });
 
-            container.appendChild(card);
+            const data = await res.json();
+
+            document.getElementById('scene-output').innerHTML = `
+                <h3>${data.title}</h3>
+                <p>${data.description}</p>
+
+                <h4>Beat Map</h4>
+                <pre>${data.beats}</pre>
+
+                <h4>Dialogue</h4>
+                <pre>${data.dialogue}</pre>
+
+                <h4>Camera Notes</h4>
+                <pre>${data.camera}</pre>
+            `;
         });
-    }
-
-    loadCharacters();
-
-    document.getElementById('generate-btn').addEventListener('click', async () => {
-        const prompt = document.getElementById('scene-prompt').value;
-
-        const res = await fetch('/api/scene', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                characters: selectedCharacters,
-                prompt: prompt
-            })
-        });
-
-        const data = await res.json();
-
-        document.getElementById('scene-output').innerHTML = `
-            <h3>${data.title}</h3>
-            <p>${data.description}</p>
-            <h4>Beat Map</h4>
-            <pre>${data.beats}</pre>
-            <h4>Dialogue</h4>
-            <pre>${data.dialogue}</pre>
-            <h4>Camera Notes</h4>
-            <pre>${data.camera}</pre>
-        `;
-    });
     </script>
 </body>
 </html>

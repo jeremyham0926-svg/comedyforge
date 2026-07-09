@@ -79,7 +79,8 @@
         document.getElementById('generate-btn').addEventListener('click', async () => {
             const prompt = document.getElementById('scene-prompt').value;
 
-            const res = await fetch('/api/scene', {
+            const res = await fetch('https://comedyforge.onrender.com/scene')
+, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -96,7 +97,8 @@
         document.getElementById('chaos-btn').addEventListener('click', async () => {
             console.log("CHAOS MODE ACTIVATED");
 
-            const res = await fetch('/api/chaos', {
+            const res = await fetch('https://comedyforge.onrender.com/chaos')
+, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }
             });

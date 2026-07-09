@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// Character list
 const characters = [
     {
         name: "Detective Goose",
@@ -25,9 +24,9 @@ const characters = [
     }
 ];
 
-// GET /api/characters
 router.get('/', (req, res) => {
     res.json(characters);
 });
 
 module.exports = router;
+
